@@ -1,33 +1,46 @@
-import { MonzoTransactionDto } from "../../integrations/monzo/monzo-transaction.dto";
+import { RevolutTransactionDto } from '../../integrations/revolut/revolut-transaction.dto';
 
-export class MonzoTransactionDtoStub implements MonzoTransactionDto {
-
+export class RevolutTransactionDtoStub implements RevolutTransactionDto {
   id: string;
-  created: string;
-  description: string;
-  amount: number;
-  currency: string;
-  metadata: {
-    reference: string;
+  created_at: string;
+  completed_at: string;
+  state: string;
+  amount: {
+    value: string;
+    currency: string;
   };
+  merchant: unknown;
+  counterparty: {
+    id: string;
+    name: string;
+  };
+  reference: string;
 
-  constructor(props: Partial<MonzoTransactionDto> | undefined = {}) {
+  constructor(props: Partial<RevolutTransactionDto> | undefined = {}) {
     const {
-      id = "tx_00001YpBqNqL8mWnKf4t2Z",
-      created = "2023-04-05T09:12:00.000Z",
-      description= "Monthly rent payment",
-      amount = -120000,
-      currency = "EUR",
-      metadata = {
-        reference: "SEPA-0987654321"
-      }
-  } = props;
+      id = 'tr_0987654321',
+      created_at = '2022-03-21T14:16:32.000Z',
+      completed_at = '2022-03-21T14:18:32.000Z',
+      state = 'COMPLETED',
+      amount = {
+        value: '78.99',
+        currency: 'EUR',
+      },
+      merchant = null,
+      counterparty = {
+        id: 'acc_0987654321',
+        name: 'John Doe',
+      },
+      reference = 'SEPA-0987654321',
+    } = props;
 
-    this.id = id
-    this.created = created
-    this.description = description
-    this.amount = amount
-    this.currency = currency
-    this.metadata = metadata
+    this.id = id;
+    this.created_at = created_at;
+    this.completed_at = completed_at;
+    this.state = state;
+    this.amount = amount;
+    this.merchant = merchant;
+    this.counterparty = counterparty;
+    this.reference = reference;
   }
 }

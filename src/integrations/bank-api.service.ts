@@ -2,9 +2,9 @@ import { Transaction } from '../transactions/entities/transaction.entity';
 import { RevolutTransactionDto } from './revolut/revolut-transaction.dto';
 import { SterlingTransactionDto } from './sterling/sterling-transaction.dto';
 import { MonzoTransactionDto } from './monzo/monzo-transaction.dto';
-import Joi, { ValidationError } from "joi";
+import Joi from 'joi';
 import { HttpService } from '@nestjs/axios';
-import { HttpException, HttpStatus } from "@nestjs/common";
+import { InternalServerErrorException } from '@nestjs/common';
 
 export type BankApiTransactionDto =
   | RevolutTransactionDto
@@ -47,8 +47,11 @@ export class BankApiService<TransactionDto extends BankApiTransactionDto>
   validateSchema(transactions: TransactionDto[], schema: Joi.Schema): void {
     const { error } = schema.validate(transactions);
 
-    if (error.details) {
-      throw new HttpException(error.details, HttpStatus.INTERNAL_SERVER_ERROR);
+    if (error) {
+      throw new InternalServerErrorException(
+        { error: 'Something went wrong', status: 500 },
+        error.message,
+      );
     }
   }
 

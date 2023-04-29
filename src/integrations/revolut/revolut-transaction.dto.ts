@@ -1,4 +1,4 @@
-export class RevolutTransactionDto{
+export class RevolutTransactionDto {
   id: string;
   created_at: string;
   completed_at: string;
@@ -7,7 +7,7 @@ export class RevolutTransactionDto{
     value: string;
     currency: string;
   };
-  merchant: object;
+  merchant: unknown;
   counterparty: {
     id: string;
     name: string;

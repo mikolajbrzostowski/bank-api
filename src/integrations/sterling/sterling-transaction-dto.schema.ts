@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-const StarlingTransactionSchema = Joi.object({
+const SterlingTransactionSchema = Joi.object({
   id: Joi.string().required(),
   currency: Joi.string().required(),
   amount: Joi.string().required(),
@@ -10,6 +10,6 @@ const StarlingTransactionSchema = Joi.object({
   reference: Joi.string().required(),
 });
 
-export const StarlingTransactionsSchema = Joi.array().items(
-  StarlingTransactionSchema,
+export const SterlingTransactionsSchema = Joi.array().items(
+  SterlingTransactionSchema,
 );

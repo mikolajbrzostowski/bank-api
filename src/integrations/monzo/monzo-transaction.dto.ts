@@ -1,16 +1,10 @@
-export class RevolutTransactionDto{
+export interface MonzoTransactionDto {
   id: string;
-  created_at: string;
-  completed_at: string;
-  state: string;
-  amount: {
-    value: string;
-    currency: string;
+  created: string;
+  description: string;
+  amount: number;
+  currency: string;
+  metadata: {
+    reference: string;
   };
-  merchant: object;
-  counterparty: {
-    id: string;
-    name: string;
-  };
-  reference: string;
 }

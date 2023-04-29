@@ -1,6 +1,6 @@
 import * as Joi from 'joi';
 
-export const RevolutTransactionSchema = Joi.object({
+const RevolutTransactionSchema = Joi.object({
   id: Joi.string().required(),
   created_at: Joi.string().required(),
   completed_at: Joi.string().required(),
@@ -9,7 +9,7 @@ export const RevolutTransactionSchema = Joi.object({
     value: Joi.string().required(),
     currency: Joi.string().required(),
   }),
-  merchant: Joi.object({}),
+  merchant: Joi.any().allow(null, Joi.object({}).unknown(true)),
   counterparty: Joi.object({
     id: Joi.string().required(),
     name: Joi.string().required(),

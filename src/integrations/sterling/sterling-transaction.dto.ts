@@ -1,4 +1,4 @@
-export class StarlingTransactionDto {
+export class SterlingTransactionDto {
   id: string;
   currency: string;
   amount: string;

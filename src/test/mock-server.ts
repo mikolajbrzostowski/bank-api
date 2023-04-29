@@ -1,10 +1,8 @@
-import { setupServer } from "msw/node";
+import { setupServer } from 'msw/node';
 
 type HandlerParams = Parameters<typeof setupServer>;
 function setupMockServer(...handlers: HandlerParams) {
-  const server = setupServer(...handlers );
-
-  return server;
+  return setupServer(...handlers);
 }
 
 export { setupMockServer };

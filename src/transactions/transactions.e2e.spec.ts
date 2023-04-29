@@ -20,7 +20,6 @@ import { RevolutTransactionDtoStub } from '../test/stubs/revolutTransactionDto.s
 import { SterlingTransactionDtoStub } from '../test/stubs/sterlingTransactionDto.stub';
 
 describe('TransactionsService', () => {
-  let transactionsService: TransactionsService;
 
   let configService: ConfigService;
   let httpServer: any;
@@ -41,7 +40,6 @@ describe('TransactionsService', () => {
     await app.init();
 
     httpServer = app.getHttpServer();
-    transactionsService = module.get<TransactionsService>(TransactionsService);
     configService = module.get<ConfigService>(ConfigService);
     integrationMockServer.listen({
       onUnhandledRequest: 'bypass',

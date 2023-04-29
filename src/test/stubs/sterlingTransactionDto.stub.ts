@@ -1,33 +1,31 @@
-import { MonzoTransactionDto } from "../../integrations/monzo/monzo-transaction.dto";
+import { SterlingTransactionDto } from '../../integrations/sterling/sterling-transaction.dto';
 
-export class MonzoTransactionDtoStub implements MonzoTransactionDto {
-
+export class SterlingTransactionDtoStub implements SterlingTransactionDto {
   id: string;
-  created: string;
-  description: string;
-  amount: number;
   currency: string;
-  metadata: {
-    reference: string;
-  };
+  amount: string;
+  direction: string;
+  narrative: string;
+  created: string;
+  reference: string;
 
-  constructor(props: Partial<MonzoTransactionDto> | undefined = {}) {
+  constructor(props: Partial<SterlingTransactionDto> | undefined = {}) {
     const {
-      id = "tx_00001YpBqNqL8mWnKf4t2Z",
-      created = "2023-04-05T09:12:00.000Z",
-      description= "Monthly rent payment",
-      amount = -120000,
-      currency = "EUR",
-      metadata = {
-        reference: "SEPA-0987654321"
-      }
-  } = props;
+      id = '6d4c34fc-94e7-4e52-8a36-9c40b102ecfc',
+      currency = 'EUR',
+      amount = '-25.00',
+      direction = 'OUT',
+      narrative = 'Payment to Jane Smith',
+      created = '2022-03-21T14:16:32.000Z',
+      reference = 'SEPA-1234567890',
+    } = props;
 
-    this.id = id
-    this.created = created
-    this.description = description
-    this.amount = amount
-    this.currency = currency
-    this.metadata = metadata
+    this.id = id;
+    this.currency = currency;
+    this.amount = amount;
+    this.direction = direction;
+    this.narrative = narrative;
+    this.created = created;
+    this.reference = reference;
   }
 }
